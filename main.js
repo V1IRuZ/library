@@ -27,8 +27,18 @@ addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1
 function displayBooks () {
     myLibrary.forEach(book => {
         const card = document.createElement("div");
+        const name = document.createElement("h1");
+        const author = document.createElement("h2");
+        const para = document.createElement("p");
         card.classList.add("card");
-        card.textContent = `Name: ${book.title} Author: ${book.author} Published: ${book.year}`;
+        name.textContent = `${book.title}`;
+        author.textContent = `${book.author}`;
+        para.classList.add("text");
+        para.textContent = `The book was published in ${book.year}.`;
+
+        card.appendChild(name);
+        card.appendChild(author);
+        card.appendChild(para);
         container.appendChild(card);
     })
 };
