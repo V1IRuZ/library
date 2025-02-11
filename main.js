@@ -1,4 +1,7 @@
 const container = document.querySelector(".container");
+const addBook = document.querySelector(".add-book");
+const closeModal = document.querySelector(".close");
+const modal = document.querySelector("#modal");
 
 // Kirjasto array
 const myLibrary = [];
@@ -46,6 +49,13 @@ function displayBooks () {
 displayBooks();
 
 // Painike, jolla käyttäjä voi lisätä uuden kirjan
+addBook.addEventListener("click", () => {
+    modal.showModal();
+})
+
+closeModal.addEventListener("click", () => {
+    modal.close();
+})
 // - Form/dialog/modal esim sivupalkissa
 // - Katso miten submit painike toimii, event.preventDefault();
 

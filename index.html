@@ -12,7 +12,19 @@
         <header>
             <h1>My Library</h1>
         </header>
-        <aside class="sidebar">Sidebar</aside>
+        <aside class="sidebar">
+            <button class="add-book">Add Book</button>
+            <dialog class="modal" id="modal">
+                <form action="" method="dialog">
+                    <h2>Fill following information</h2>
+                    <div>
+                        <label for="book-title">Title</label>
+                        <input type="text" id="book-title">
+                    </div>
+                    <button class="close">Close</button>
+                </form>
+            </dialog>
+        </aside>
         <div class="main-content">
             <div class="container">
             
