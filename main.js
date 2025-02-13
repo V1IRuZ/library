@@ -46,18 +46,26 @@ displayBooks();
 // Funktio: Looppaa Arrayn läpi ja näytä kirjat sivulla
 // Näytä taulukossa tai kortissa
 function displayBooks () {
-    container.innerHTML = "";
+
+  // clear the list of books to display
+    while (container.firstChild) {
+      container.removeChild(container.lastChild);
+    }
+
     myLibrary.forEach(book => {
         const card = document.createElement("div");
-        const name = document.createElement("h1");
-        const author = document.createElement("h2");
-        const para = document.createElement("p");
         card.classList.add("card");
+
+        const name = document.createElement("h1");
         name.textContent = `${book.title}`;
+
+        const author = document.createElement("h2");
         author.textContent = `${book.author}`;
+
+        const para = document.createElement("p");
         para.classList.add("text");
         para.textContent = `The book was published in ${book.year}.`;
-
+        
         card.appendChild(name);
         card.appendChild(author);
         card.appendChild(para);
@@ -93,3 +101,7 @@ closeModal.addEventListener("click", () => {
 
 // Lisää painike jokaisen kirjan näyttöön muuttaaksesi sen lukutilaa
 //  - Luo Book prototype funktio, joka vaihtelee esiintymän lukutilaa.
+
+// ENSI KERTA:
+// 1. Muuta innerHTML nollaus. (poista kohteet yksitellen) https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript?page=1&tab=scoredesc#tab-top
+// 2. nollaa Input kentät
