@@ -8,6 +8,7 @@ const bookAuthor = document.querySelector("#book-author");
 const bookYear = document.querySelector("#book-year");
 const allCards = document.querySelectorAll(".card");
 const form  = document.querySelector("form");
+const allRemoveBtns = document.querySelectorAll(".removeBook");
 
 // Kirjasto array
 const myLibrary = [];
@@ -53,8 +54,11 @@ function displayBooks () {
       container.removeChild(container.lastChild);
     }
 
-    myLibrary.forEach(book => {
-        const card = document.createElement("div");
+    for (let i = 0; i < myLibrary.length; i++) {
+      let book = myLibrary[i];
+      let index = i.toString();
+
+      const card = document.createElement("div");
         card.classList.add("card");
 
         const name = document.createElement("h1");
@@ -66,15 +70,20 @@ function displayBooks () {
         const para = document.createElement("p");
         para.classList.add("text");
         para.textContent = `The book was published in ${book.year}.`;
-        
+
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("removeBook")
+        removeBtn.setAttribute("data-index", index);
+        removeBtn.textContent = "Remove";
+         
         card.appendChild(name);
         card.appendChild(author);
         card.appendChild(para);
+        card.appendChild(removeBtn);
         container.appendChild(card);
-    })
-};
+    }
+  };
 
-// displayBooks();
 
 // Painike, jolla käyttäjä voi lisätä uuden kirjan
 addBook.addEventListener("click", () => {
@@ -98,6 +107,14 @@ closeModal.addEventListener("click", () => {
     form.reset();
 })
 
+allRemoveBtns.forEach(button => {
+    button.addEventListener("click", e => {
+      e.target.style.backgroundColor = "red";
+      e.textContent = "Clicked";
+      console.log("clicked");
+    })
+})
+
 
 // - Form/dialog/modal esim sivupalkissa
 // - Katso miten submit painike toimii, event.preventDefault();
@@ -107,6 +124,4 @@ closeModal.addEventListener("click", () => {
 // Lisää painike jokaisen kirjan näyttöön muuttaaksesi sen lukutilaa
 //  - Luo Book prototype funktio, joka vaihtelee esiintymän lukutilaa.
 
-// ENSI KERTA:
-// 1. Muuta innerHTML nollaus. (poista kohteet yksitellen) https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript?page=1&tab=scoredesc#tab-top
-// 2. nollaa Input kentät
+
