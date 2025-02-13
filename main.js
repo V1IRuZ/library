@@ -75,6 +75,14 @@ function displayBooks () {
         removeBtn.classList.add("removeBook")
         removeBtn.setAttribute("data-index", index);
         removeBtn.textContent = "Remove";
+
+        removeBtn.addEventListener("click", e => {
+          let bookIndex = e.target.getAttribute("data-index");
+          // remove book object from the array
+          myLibrary.splice(bookIndex, 1);
+          // remove clicked "card" node
+          container.removeChild(e.target.closest(".card"));
+        })
          
         card.appendChild(name);
         card.appendChild(author);
@@ -105,14 +113,6 @@ submitBtn.addEventListener("click", (e) => {
 closeModal.addEventListener("click", () => {
     modal.close();
     form.reset();
-})
-
-allRemoveBtns.forEach(button => {
-    button.addEventListener("click", e => {
-      e.target.style.backgroundColor = "red";
-      e.textContent = "Clicked";
-      console.log("clicked");
-    })
 })
 
 
