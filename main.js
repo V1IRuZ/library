@@ -7,6 +7,7 @@ const bookTitle = document.querySelector("#book-title");
 const bookAuthor = document.querySelector("#book-author");
 const bookYear = document.querySelector("#book-year");
 const allCards = document.querySelectorAll(".card");
+const form  = document.querySelector("form");
 
 // Kirjasto array
 const myLibrary = [];
@@ -89,11 +90,15 @@ submitBtn.addEventListener("click", (e) => {
     addBookToLibrary(newBookTitle, newBookAuthor, newBookYear);
     displayBooks();
     modal.close();
+    form.reset();
 })
 
 closeModal.addEventListener("click", () => {
     modal.close();
+    form.reset();
 })
+
+
 // - Form/dialog/modal esim sivupalkissa
 // - Katso miten submit painike toimii, event.preventDefault();
 
