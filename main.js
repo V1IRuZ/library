@@ -8,7 +8,6 @@ const bookAuthor = document.querySelector("#book-author");
 const bookYear = document.querySelector("#book-year");
 const allCards = document.querySelectorAll(".card");
 const form  = document.querySelector("form");
-const allRemoveBtns = document.querySelectorAll(".removeBook");
 
 // Kirjasto array
 const myLibrary = [];
@@ -40,9 +39,19 @@ function addBookToLibrary(title, author, year) {
       }
 }
 
+Book.prototype.toggleStatus = function (event) {
+  event.target.textContent = event.target.textContent === "Not read" ? "Read" : "Not read";
+  event.target.style.backgroundColor = event.target.style.backgroundColor === "green" ? "red" : "green";
+}
+
 // Manuaalisesti lisätyt kirjat
 addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937);
 addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997);
+addBookToLibrary("A Tale of Two Cities", "Charles Dickens", 1859);
+addBookToLibrary("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 1950);
+addBookToLibrary("Alice's Adventures in Wonderland", "Lewis Carroll", 1865);
+addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996);
+
 displayBooks();
 
 // Funktio: Looppaa Arrayn läpi ja näytä kirjat sivulla
@@ -82,22 +91,32 @@ function displayBooks () {
           myLibrary.splice(bookIndex, 1);
           // remove clicked "card" node
           container.removeChild(e.target.closest(".card"));
-        })
+        });
+
+        const readStatusBtn = document.createElement("button");
+        readStatusBtn.classList.add("read-status");
+        readStatusBtn.textContent = "Not read";
+        readStatusBtn.style.backgroundColor = "red";
+
+        readStatusBtn.addEventListener("click", book.toggleStatus);
+
          
         card.appendChild(name);
         card.appendChild(author);
         card.appendChild(para);
         card.appendChild(removeBtn);
+        card.appendChild(readStatusBtn);
         container.appendChild(card);
     }
   };
 
 
-// Painike, jolla käyttäjä voi lisätä uuden kirjan
+// Open Modal
 addBook.addEventListener("click", () => {
     modal.showModal();
 })
 
+// Submit form
 submitBtn.addEventListener("click", (e) => {
     const newBookTitle =  bookTitle.value;
     const newBookAuthor = bookAuthor.value;
@@ -110,6 +129,7 @@ submitBtn.addEventListener("click", (e) => {
     form.reset();
 })
 
+// close modal 
 closeModal.addEventListener("click", () => {
     modal.close();
     form.reset();
