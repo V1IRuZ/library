@@ -8,42 +8,50 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="page">
-        <header>
-            <h1>My Library</h1>
-        </header>
-        <aside class="sidebar">
+    <header>
+        <h1>My Library</h1>
+        <div>
             <button class="add-book">Add Book</button>
             <dialog class="modal" id="modal">
                 <form action="" method="dialog">
-                    <h2>Fill following information</h2>
-                    <div>
-                        <label for="book-title">Title</label>
-                        <input type="text" id="book-title">
-                    </div>
-                    <div>
-                        <label for="book-author">Author</label>
-                        <input type="text" id="book-author">
-                    </div>
-                    <div>
-                        <label for="book-year">Published in</label>
-                        <input type="number" id="book-year">
-                    </div>
-                    <fieldset>
+                    <h2>Book details</h2>
+                    <fieldset class="details">
                         <div>
-                            <label for="book-not-read">Not read</label>
-                            <input type="radio" id="book-not-read" name="status" value="Not read">
+                            <label for="book-title">Title</label>
+                            <input type="text" id="book-title">
                         </div>
                         <div>
-                            <label for="book-read">Read</label>
-                            <input type="radio" id="book-read" name="status" value="Read">
+                            <label for="book-author">Author</label>
+                            <input type="text" id="book-author">
+                        </div>
+                        <div>
+                            <label for="book-year">Published in</label>
+                            <input type="number" id="book-year">
                         </div>
                     </fieldset>
-                    <button type="submit" id="submit">Confirm</button>
-                    <button class="close">Close</button>
+                    <fieldset class="read-status">
+                        <h3>Have you read the book?</h3>
+                        <div class="radio-buttons">
+                            <div>
+                                <label for="book-read">Yes</label>
+                                <input type="radio" id="book-read" name="status" value="Read">
+                            </div>
+                            <div>
+                                <label for="book-not-read">No</label>
+                                <input type="radio" id="book-not-read" name="status" value="Not read" checked>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="buttons">
+                        <button type="submit" id="submit">Submit</button>
+                        <button class="close">Close</button>
+                    </div>
                 </form>
             </dialog>
-        </aside>
+        </div>
+    </header>
+    <div class="page">
+      
         <div class="main-content">
             <div class="container">
             
