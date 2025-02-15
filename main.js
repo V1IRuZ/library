@@ -3,9 +3,6 @@ const addBook = document.querySelector(".add-book");
 const closeModal = document.querySelector(".close");
 const modal = document.querySelector("#modal");
 const submitBtn = document.querySelector("#submit");
-const bookTitle = document.querySelector("#book-title");
-const bookAuthor = document.querySelector("#book-author");
-const bookYear = document.querySelector("#book-year");
 const allCards = document.querySelectorAll(".card");
 const form  = document.querySelector("form");
 
@@ -14,15 +11,16 @@ const myLibrary = [];
 
 
 // Kirja Constructori
-function Book(title, author, year) {
+function Book(title, author, year, status) {
     this.title = title;
     this.author = author;
     this.year = year;
+    this.status = status;
 }
 
 // Ota parametrit, Luo kirja ja lisää se array:hyn
-function addBookToLibrary(title, author, year) {
-    const book = new Book(title, author, year);
+function addBookToLibrary(title, author, year, status) {
+    const book = new Book(title, author, year, status);
 
     // Add only uniques books
     let index = -1;
@@ -45,12 +43,12 @@ Book.prototype.toggleStatus = function (event) {
 }
 
 // Manuaalisesti lisätyt kirjat
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937);
-addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997);
-addBookToLibrary("A Tale of Two Cities", "Charles Dickens", 1859);
-addBookToLibrary("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 1950);
-addBookToLibrary("Alice's Adventures in Wonderland", "Lewis Carroll", 1865);
-addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996);
+addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937, "Not read");
+addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997, "Not read");
+addBookToLibrary("A Tale of Two Cities", "Charles Dickens", 1859, "Not read");
+addBookToLibrary("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 1950, "Not read");
+addBookToLibrary("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "Not read");
+addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996, "Not read");
 
 displayBooks();
 
@@ -95,8 +93,14 @@ function displayBooks () {
 
         const readStatusBtn = document.createElement("button");
         readStatusBtn.classList.add("read-status");
-        readStatusBtn.textContent = "Not read";
-        readStatusBtn.style.backgroundColor = "red";
+        readStatusBtn.textContent = `${book.status}`;
+
+        if (book.status === "Not read") {
+          readStatusBtn.style.backgroundColor = "red";
+        } else if (book.status === "Read") {
+          readStatusBtn.style.backgroundColor = "green";
+        }
+        
 
         readStatusBtn.addEventListener("click", book.toggleStatus);
 
@@ -117,16 +121,18 @@ addBook.addEventListener("click", () => {
 })
 
 // Submit form
-submitBtn.addEventListener("click", (e) => {
-    const newBookTitle =  bookTitle.value;
-    const newBookAuthor = bookAuthor.value;
-    const newBookYear = bookYear.value;
-    e.preventDefault();
-  
-    addBookToLibrary(newBookTitle, newBookAuthor, newBookYear);
+form.addEventListener("submit", (e) => {
+    const newBookTitle = document.querySelector("#book-title").value;
+    const newBookAuthor = document.querySelector("#book-author").value;
+    const newBookYear = document.querySelector("#book-year").value;
+    const newBookStatus = document.querySelector('input[name="status"]:checked').value;
+
+    addBookToLibrary(newBookTitle, newBookAuthor, newBookYear, newBookStatus);
     displayBooks();
     modal.close();
     form.reset();
+
+    e.preventDefault();
 })
 
 // close modal 
@@ -145,3 +151,7 @@ closeModal.addEventListener("click", () => {
 //  - Luo Book prototype funktio, joka vaihtelee esiintymän lukutilaa.
 
 
+// ENSI KERRALLA
+
+// KEKSI MITEN SAADA ARVO EI CHECKATUSTA LAATIKOSTA
+// MITEN LIITTÄÄ ARVO FUNKTIOON
