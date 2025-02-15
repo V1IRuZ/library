@@ -6,11 +6,8 @@ const submitBtn = document.querySelector("#submit");
 const allCards = document.querySelectorAll(".card");
 const form  = document.querySelector("form");
 
-// Kirjasto array
 const myLibrary = [];
 
-
-// Kirja Constructori
 function Book(title, author, year, status) {
     this.title = title;
     this.author = author;
@@ -18,7 +15,6 @@ function Book(title, author, year, status) {
     this.status = status;
 }
 
-// Ota parametrit, Luo kirja ja lisää se array:hyn
 function addBookToLibrary(title, author, year, status) {
     const book = new Book(title, author, year, status);
 
@@ -37,9 +33,8 @@ function addBookToLibrary(title, author, year, status) {
       }
 }
 
-Book.prototype.toggleStatus = function (event) {
-  event.target.textContent = event.target.textContent === "Not read" ? "Read" : "Not read";
-  event.target.style.backgroundColor = event.target.style.backgroundColor === "green" ? "red" : "green";
+Book.prototype.toggleStatus = function () {
+  this.status = this.status === "Not read" ? "Read" : "Not read";
 }
 
 // Manuaalisesti lisätyt kirjat
@@ -52,8 +47,6 @@ addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996, "Not read");
 
 displayBooks();
 
-// Funktio: Looppaa Arrayn läpi ja näytä kirjat sivulla
-// Näytä taulukossa tai kortissa
 function displayBooks () {
 
   // clear the list of books to display
@@ -95,15 +88,18 @@ function displayBooks () {
         readStatusBtn.classList.add("read-status");
         readStatusBtn.textContent = `${book.status}`;
 
+        readStatusBtn.addEventListener("click", (event) => {
+          book.toggleStatus();
+          event.target.textContent = `${book.status}`;
+          event.target.style.backgroundColor = event.target.style.backgroundColor === "green" ? "red" : "green";
+          console.log(book.status);
+        });
+
         if (book.status === "Not read") {
           readStatusBtn.style.backgroundColor = "red";
         } else if (book.status === "Read") {
           readStatusBtn.style.backgroundColor = "green";
         }
-        
-
-        readStatusBtn.addEventListener("click", book.toggleStatus);
-
          
         card.appendChild(name);
         card.appendChild(author);
@@ -140,18 +136,3 @@ closeModal.addEventListener("click", () => {
     modal.close();
     form.reset();
 })
-
-
-// - Form/dialog/modal esim sivupalkissa
-// - Katso miten submit painike toimii, event.preventDefault();
-
-// Lisää painike jokaisen kirjan, kohdalle millä sen voi poistaa kirjastosta.
-
-// Lisää painike jokaisen kirjan näyttöön muuttaaksesi sen lukutilaa
-//  - Luo Book prototype funktio, joka vaihtelee esiintymän lukutilaa.
-
-
-// ENSI KERRALLA
-
-// KEKSI MITEN SAADA ARVO EI CHECKATUSTA LAATIKOSTA
-// MITEN LIITTÄÄ ARVO FUNKTIOON
