@@ -12,7 +12,7 @@
   }
   
   body {
-    line-height: 1.5;
+    line-height: 1.2;
     -webkit-font-smoothing: antialiased;
   }
   
@@ -44,11 +44,15 @@
 :root {
 --system-ui: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 --background-color: #531818;
---white: #f2eaea;
+--white: #f8f8f8;
 --blue: #279af8;
 --green: #69b64b;
+--green-hover: #53913b;
 --red: #dc4242;
 --black: #151515;
+--light-grey: #747474;
+--container-bg-color: #e0e0e0;
+--card-box-shadow: 3px 3px 3px #bbbbbb;
 }
 
 body {
@@ -220,14 +224,62 @@ form .buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat();
+  background-color: var(--container-bg-color);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .container .card {
   display: grid;
-  grid-template-rows: 2fr, repeat(5, 1fr);
-  background-color: rgb(239, 234, 234);
-  border: 1px solid black;
+  grid-template-rows: 2fr, repeat(4, 1fr);
+  gap: 8px;
+  background-color: var(--white);
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
+  box-shadow: var(--card-box-shadow);
+}
+
+.card h1 {
+  font-size: 1.3rem;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #5a5858
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button.status-btn,
+button.remove-book {
+  width: 100px;
+  height: 40px;
+  padding: 5px;
+  color: var(--white);
+  border-radius: 30px;
+  border-style: none;
+  font-weight: bold;
+}
+
+button.remove-book {
+  background-color: var(--red);
+}
+
+button.status-btn:hover,
+button.remove-book:hover {
+  cursor: pointer;
+  filter: brightness(85%);
 }
