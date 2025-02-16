@@ -247,6 +247,7 @@ form .buttons {
   padding: 10px;
   border-radius: 10px;
   min-height: 100vh;
+  background-color: rgba(36, 36, 36, 0.8)
 }
 
 .container .card {
@@ -261,6 +262,12 @@ form .buttons {
 }
 
 .card h1 {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+          line-clamp: 1;
   font-family: 'Abbasy Calligraphy Typeface', var(--system-ui);
   font-size: 1.5rem;
   border-bottom: 2px solid var(--light-grey);
