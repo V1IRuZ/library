@@ -1,3 +1,23 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'Old London';
+  src: url('fonts/OldLondon.woff2') format('woff2'),
+      url('fonts/OldLondon.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Abbasy Calligraphy Typeface';
+  src: url('fonts/AbbasyCalligraphyTypeface.woff2') format('woff2'),
+      url('fonts/AbbasyCalligraphyTypeface.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
@@ -57,9 +77,9 @@
 
 body {
   font-family: var(--system-ui);
-  background-color: var(--background-color);
+  background: var(--container-bg-color) url(images/library.jpg);
   display: grid;
-  grid-template-rows: 6em, 5fr;
+  grid-template-rows: 6em, 5fr, 1fr;
   gap: 40px;
 }
 /* Page layout */
@@ -67,7 +87,6 @@ body {
 .page {
     margin: 0 auto;
     width: clamp(900px, 75%, 1440px);
-    /* height: 100vh;  */
   }
 
 
@@ -76,13 +95,14 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #531818;
+  background-color: var(--background-color);
   border-bottom: 2px solid white;
 }
 
 header h1 {
+  font-family: 'Old London', var(--system-ui);
   margin: 30px;
-  font-size: 4rem;
+  font-size: 4.5rem;
   color: #f2eaea;
 }
 
@@ -224,12 +244,13 @@ form .buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat();
-  background-color: var(--container-bg-color);
   padding: 10px;
   border-radius: 10px;
+  min-height: 100vh;
 }
 
 .container .card {
+  height: 210px;
   display: grid;
   grid-template-rows: 2fr, repeat(4, 1fr);
   gap: 8px;
@@ -237,11 +258,13 @@ form .buttons {
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
-  box-shadow: var(--card-box-shadow);
 }
 
 .card h1 {
-  font-size: 1.3rem;
+  font-family: 'Abbasy Calligraphy Typeface', var(--system-ui);
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--light-grey);
+  padding-bottom: 5px;
 }
 
 .card h2 {
@@ -282,4 +305,12 @@ button.status-btn:hover,
 button.remove-book:hover {
   cursor: pointer;
   filter: brightness(85%);
+}
+
+footer {
+  background-color: var(--background-color);
+  text-align: center;
+  padding: 20px;
+  color: white;
+  border-top: 2px solid white;
 }

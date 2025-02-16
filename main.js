@@ -38,22 +38,6 @@ Book.prototype.toggleStatus = function () {
   this.status = this.status === "Not read" ? "Read" : "Not read";
 }
 
-// Manuaalisesti lisätyt kirjat
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937, "Not read", "Fantasy");
-addBookToLibrary("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979, "Read", "Science fiction")
-addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997, "Not read", "Fantasy");
-addBookToLibrary("A Tale of Two Cities", "Charles Dickens", 1859, "Not read", "Historical fiction");
-addBookToLibrary("The Long Road Home", "Danielle Steel", 1998, "Not read", "Romance");
-addBookToLibrary("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 1950, "Not read", "Fantasy");
-addBookToLibrary("The Godfather", "Mario Puzo", 1969, "Read", "Crime");
-addBookToLibrary("The Shining", "Stephen King", 1977, "Read", "Horror");
-addBookToLibrary("And Then There Were None", "Agatha Christie", 1939, "Not read", "Mystery");
-addBookToLibrary("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "Not read", "Fantasy");
-addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 1953, "Not read", "Dystopian");
-addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996, "Not read", "Fantasy");
-
-displayBooks();
-
 function displayBooks () {
 
   // First, clear the current display of books.
@@ -154,3 +138,19 @@ closeModal.addEventListener("click", (e) => {
     form.reset();
     e.preventDefault();
 })
+
+// Manuaalisesti lisätyt kirjat
+addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937, "Not read", "Fantasy");
+addBookToLibrary("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979, "Read", "Science fiction")
+addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997, "Not read", "Fantasy");
+addBookToLibrary("A Tale of Two Cities", "Charles Dickens", 1859, "Not read", "Historical fiction");
+addBookToLibrary("The Long Road Home", "Danielle Steel", 1998, "Not read", "Romance");
+addBookToLibrary("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 1950, "Not read", "Fantasy");
+addBookToLibrary("The Godfather", "Mario Puzo", 1969, "Read", "Crime");
+addBookToLibrary("The Shining", "Stephen King", 1977, "Read", "Horror");
+addBookToLibrary("And Then There Were None", "Agatha Christie", 1939, "Not read", "Mystery");
+addBookToLibrary("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "Not read", "Fantasy");
+addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 1953, "Not read", "Dystopian");
+addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996, "Not read", "Fantasy");
+
+displayBooks();
