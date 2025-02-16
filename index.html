@@ -18,7 +18,7 @@
                     <fieldset class="details">
                         <div>
                             <label for="book-title">Title</label>
-                            <input type="text" id="book-title">
+                            <input type="text" id="book-title" required>
                         </div>
                         <div>
                             <label for="book-author">Author</label>
@@ -30,6 +30,26 @@
                         </div>
                     </fieldset>
                     <fieldset class="read-status">
+                        <h3>Genre</h3>
+                        <div class="genre-selection">
+                            <label for="genre-select"></label>
+                            <select name="genre" id="genre-select">
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Science fiction">Science fiction</option>
+                                <option value="Adventure fiction">Adventure fiction</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Crime">Crime</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Historical fiction">Historical fiction</option>
+                                <option value="Dystopian">Dystopian</option>
+                                <option value="Literary fiction">Literary fiction</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
                         <h3>Have you read the book?</h3>
                         <div class="radio-buttons">
                             <div>
@@ -51,12 +71,7 @@
         </div>
     </header>
     <div class="page">
-      
-        <div class="main-content">
-            <div class="container">
-            
-            </div>
-        </div>
+        <div class="container"></div>
     </div>
 </body>
 </html>

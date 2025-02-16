@@ -114,14 +114,6 @@ dialog h2 {
   margin-left: 1em;
 }
 
-.container .card {
-  background-color: rgb(239, 234, 234);
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-}
-
 fieldset {
   border-style: none;
 }
@@ -220,4 +212,22 @@ form .buttons {
 ::backdrop {
   background-color: var(--background-color);
   opacity: 0.8;
+}
+
+/* Container and cards */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat();
+}
+
+.container .card {
+  display: grid;
+  grid-template-rows: 2fr, repeat(5, 1fr);
+  background-color: rgb(239, 234, 234);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
 }

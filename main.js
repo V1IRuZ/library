@@ -8,15 +8,16 @@ const form  = document.querySelector("form");
 
 const myLibrary = [];
 
-function Book(title, author, year, status) {
+function Book(title, author, year, status, genre) {
     this.title = title;
     this.author = author;
     this.year = year;
     this.status = status;
+    this.genre = genre;
 }
 
-function addBookToLibrary(title, author, year, status) {
-    const book = new Book(title, author, year, status);
+function addBookToLibrary(title, author, year, status, genre) {
+    const book = new Book(title, author, year, status, genre);
 
     // Add only uniques books
     let index = -1;
@@ -38,27 +39,28 @@ Book.prototype.toggleStatus = function () {
 }
 
 // Manuaalisesti lisätyt kirjat
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937, "Not read");
-addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997, "Not read");
-addBookToLibrary("A Tale of Two Cities", "Charles Dickens", 1859, "Not read");
-addBookToLibrary("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 1950, "Not read");
-addBookToLibrary("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "Not read");
-addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996, "Not read");
+addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937, "Not read", "Fantasy");
+addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997, "Not read", "Fantasy");
+addBookToLibrary("A Tale of Two Cities", "Charles Dickens", 1859, "Not read", "Historical fiction");
+addBookToLibrary("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 1950, "Not read", "Fantasy");
+addBookToLibrary("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "Not read", "Fantasy");
+addBookToLibrary("A Game of Thrones", "George R. R. Martin", 1996, "Not read", "Fantasy");
 
 displayBooks();
 
 function displayBooks () {
 
-  // clear the list of books to display
+  // First, clear the current display of books.
     while (container.firstChild) {
       container.removeChild(container.lastChild);
     }
 
+    // Loop a new display of books for the user.
     for (let i = 0; i < myLibrary.length; i++) {
       let book = myLibrary[i];
       let index = i.toString();
 
-      const card = document.createElement("div");
+        const card = document.createElement("div");
         card.classList.add("card");
 
         const name = document.createElement("h1");
@@ -66,6 +68,9 @@ function displayBooks () {
 
         const author = document.createElement("h2");
         author.textContent = `${book.author}`;
+
+        const genre = document.createElement("h3");
+        genre.textContent = `${book.genre}`;
 
         const para = document.createElement("p");
         para.classList.add("text");
@@ -85,9 +90,10 @@ function displayBooks () {
         });
 
         const readStatusBtn = document.createElement("button");
-        readStatusBtn.classList.add("read-status");
+        readStatusBtn.classList.add("status-btn");
         readStatusBtn.textContent = `${book.status}`;
 
+        // If the user wants to change the read status of the book.
         readStatusBtn.addEventListener("click", (event) => {
           book.toggleStatus();
           event.target.textContent = `${book.status}`;
@@ -95,6 +101,7 @@ function displayBooks () {
           console.log(book.status);
         });
 
+        // Check what value the user entered from the form, and edit the button color accordingly.
         if (book.status === "Not read") {
           readStatusBtn.style.backgroundColor = "red";
         } else if (book.status === "Read") {
@@ -103,13 +110,13 @@ function displayBooks () {
          
         card.appendChild(name);
         card.appendChild(author);
+        card.appendChild(genre);
         card.appendChild(para);
         card.appendChild(removeBtn);
         card.appendChild(readStatusBtn);
         container.appendChild(card);
     }
   };
-
 
 // Open Modal
 addBook.addEventListener("click", () => {
@@ -120,10 +127,11 @@ addBook.addEventListener("click", () => {
 form.addEventListener("submit", (e) => {
     const newBookTitle = document.querySelector("#book-title").value;
     const newBookAuthor = document.querySelector("#book-author").value;
+    const newBookGenre = document.querySelector("#genre-select").value;
     const newBookYear = document.querySelector("#book-year").value;
     const newBookStatus = document.querySelector('input[name="status"]:checked').value;
 
-    addBookToLibrary(newBookTitle, newBookAuthor, newBookYear, newBookStatus);
+    addBookToLibrary(newBookTitle, newBookAuthor, newBookYear, newBookStatus, newBookGenre);
     displayBooks();
     modal.close();
     form.reset();
@@ -132,7 +140,8 @@ form.addEventListener("submit", (e) => {
 })
 
 // close modal 
-closeModal.addEventListener("click", () => {
+closeModal.addEventListener("click", (e) => {
     modal.close();
     form.reset();
+    e.preventDefault();
 })
