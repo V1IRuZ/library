@@ -38,6 +38,15 @@ Book.prototype.toggleStatus = function () {
   this.status = this.status === "Not read" ? "Read" : "Not read";
 }
 
+function addNewIndexValue(selector) {
+  const allBtns = document.querySelectorAll(selector);
+  for (let i = 0; i < allBtns.length; i++) {
+    let nodeBook = allBtns[i];
+    let nodeIndex = i.toString();
+    nodeBook.setAttribute("data-index", nodeIndex);
+  }
+}
+
 function displayBooks () {
 
   // First, clear the current display of books.
@@ -80,6 +89,8 @@ function displayBooks () {
           myLibrary.splice(bookIndex, 1);
           // remove clicked "card" node
           container.removeChild(e.target.closest(".card"));
+          // set new index values to node elements
+          addNewIndexValue(".remove-book");
         });
 
         const readStatusBtn = document.createElement("button");

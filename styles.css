@@ -86,7 +86,8 @@ body {
  
 .page {
     margin: 0 auto;
-    width: clamp(900px, 75%, 1440px);
+    width: clamp(700px, 75%, 1440px);
+    min-height: 100vh;
   }
 
 
@@ -234,8 +235,8 @@ form .buttons {
 }
 
 ::backdrop {
-  background-color: var(--background-color);
-  opacity: 0.8;
+  background-color: var(--black);
+  opacity: 0.9;
 }
 
 /* Container and cards */
@@ -243,10 +244,8 @@ form .buttons {
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat();
   padding: 10px;
   border-radius: 10px;
-  min-height: 100vh;
   background-color: rgba(36, 36, 36, 0.8)
 }
 
