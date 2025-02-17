@@ -67,14 +67,13 @@
 --white: #f8f8f8;
 --blue: #279af8;
 --green: #69b64b;
---green-hover: #53913b;
 --red: #dc4242;
 --black: #151515;
 --light-grey: #747474;
 --container-bg-color: #e0e0e0;
---card-box-shadow: 3px 3px 3px #bbbbbb;
 }
 
+/* Body and Page div layout */
 body {
   font-family: var(--system-ui);
   background: var(--container-bg-color) url(images/library.jpg);
@@ -82,14 +81,13 @@ body {
   grid-template-rows: 6em, 5fr, 1fr;
   gap: 40px;
 }
-/* Page layout */
+
  
 .page {
     margin: 0 auto;
     width: clamp(700px, 75%, 1440px);
     min-height: 100vh;
   }
-
 
 /* Header section */
 header {
@@ -98,11 +96,21 @@ header {
   justify-content: space-between;
   background-color: var(--background-color);
   border-bottom: 2px solid white;
+  padding: 1.5em 4em;
 }
 
-header h1 {
+.logo {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+
+.logo img {
+  height: 5em;
+}
+
+.logo h1 {
   font-family: 'Old London', var(--system-ui);
-  margin: 30px;
   font-size: 4.5rem;
   color: #f2eaea;
 }
@@ -117,7 +125,6 @@ header .add-book {
   outline: none;
   border-style: none;
   color: var(--white);
-  margin: 30px;
 }
 
 header .add-book:hover {
@@ -135,7 +142,7 @@ dialog {
 
 dialog h2 {
   color: var(--black);
-  font-size: 2em;
+  font-size: 2rem;
   margin-left: 1em;
 }
 
@@ -146,9 +153,9 @@ fieldset {
 fieldset.details {
   display: grid;
   grid-template-rows: repeat(3, 3em);
-  gap: 1em;
-  padding: 10px;
-  margin: 10px;
+  gap: 0.625em;
+  padding: 0.625em;
+  margin: 0.625em;
   justify-content: space-between;
 }
 
@@ -184,8 +191,8 @@ fieldset.details {
 
 input[type=radio] {
   cursor: pointer;
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+  -ms-transform: scale(1.5); 
+  -webkit-transform: scale(1.5); 
   transform: scale(1.5);
 }
 
@@ -244,20 +251,19 @@ form .buttons {
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 10px;
+  padding: 0.625em;
   border-radius: 10px;
   background-color: rgba(36, 36, 36, 0.8)
 }
 
 .container .card {
-  height: 210px;
   display: grid;
   grid-template-rows: 2fr, repeat(4, 1fr);
-  gap: 8px;
+  gap: 0.5em;
   background-color: var(--white);
   border-radius: 10px;
-  padding: 20px;
-  margin: 10px;
+  padding: 1.25em;
+  margin: 0.625em;
 }
 
 .card h1 {
@@ -294,8 +300,8 @@ form .buttons {
 
 button.status-btn,
 button.remove-book {
-  width: 100px;
-  height: 40px;
+  width: 6.25em;
+  height: 2.5em;
   padding: 5px;
   color: var(--white);
   border-radius: 30px;
@@ -316,7 +322,7 @@ button.remove-book:hover {
 footer {
   background-color: var(--background-color);
   text-align: center;
-  padding: 20px;
+  padding: 1.25em;
   color: white;
   border-top: 2px solid white;
 }
