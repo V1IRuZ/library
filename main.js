@@ -129,10 +129,10 @@ addBook.addEventListener("click", () => {
 
 // Submit form
 form.addEventListener("submit", (e) => {
-    const newBookTitle = document.querySelector("#book-title").value;
-    const newBookAuthor = document.querySelector("#book-author").value;
+    const newBookTitle = document.querySelector("#title").value;
+    const newBookAuthor = document.querySelector("#author").value;
     const newBookGenre = document.querySelector("#genre-select").value;
-    const newBookYear = document.querySelector("#book-year").value;
+    const newBookYear = document.querySelector("#year").value;
     const newBookStatus = document.querySelector('input[name="status"]:checked').value;
 
     addBookToLibrary(newBookTitle, newBookAuthor, newBookYear, newBookStatus, newBookGenre);
