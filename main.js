@@ -48,6 +48,9 @@ function addNewIndexValue(selector) {
 }
 
 function displayBooks () {
+  // status button colors
+  const green = "rgb(105, 182, 75)";
+  const blue = "rgb(39, 154, 248)";
 
   // First, clear the current display of books.
     while (container.firstChild) {
@@ -62,8 +65,8 @@ function displayBooks () {
         const card = document.createElement("div");
         card.classList.add("card");
 
-        const name = document.createElement("h1");
-        name.textContent = `${book.title}`;
+        const title = document.createElement("h1");
+        title.textContent = `${book.title}`;
 
         const author = document.createElement("h2");
         author.textContent = `${book.author}`;
@@ -71,15 +74,14 @@ function displayBooks () {
         const genre = document.createElement("h3");
         genre.textContent = `${book.genre}`;
 
-        const para = document.createElement("p");
-        para.classList.add("text");
-        para.textContent = `The book was published in ${book.year}.`;
+        const year = document.createElement("p");
+        year.textContent = `The book was published in ${book.year}.`;
 
         const cardBtns = document.createElement("div");
         cardBtns.classList.add("card-buttons");
 
         const removeBtn = document.createElement("button");
-        removeBtn.classList.add("remove-book")
+        removeBtn.classList.add("remove-book");
         removeBtn.setAttribute("data-index", index);
         removeBtn.textContent = "Remove";
 
@@ -101,20 +103,20 @@ function displayBooks () {
         readStatusBtn.addEventListener("click", (event) => {
           book.toggleStatus();
           event.target.textContent = `${book.status}`;
-          event.target.style.backgroundColor = event.target.style.backgroundColor === "rgb(105, 182, 75)" ? "rgb(39, 154, 248)" : "rgb(105, 182, 75)";
+          event.target.style.backgroundColor = event.target.style.backgroundColor === green ? blue : green;
         });
 
         // Check what value the user entered from the form, and edit the button color accordingly.
         if (book.status === "Not read") {
-          readStatusBtn.style.backgroundColor = "rgb(39, 154, 248)";
+          readStatusBtn.style.backgroundColor = blue;
         } else if (book.status === "Read") {
-          readStatusBtn.style.backgroundColor = "rgb(105, 182, 75)";
+          readStatusBtn.style.backgroundColor = green;
         }
          
-        card.appendChild(name);
+        card.appendChild(title);
         card.appendChild(author);
         card.appendChild(genre);
-        card.appendChild(para);
+        card.appendChild(year);
         cardBtns.appendChild(readStatusBtn)
         cardBtns.appendChild(removeBtn);
         card.appendChild(cardBtns);
@@ -141,16 +143,16 @@ form.addEventListener("submit", (e) => {
     form.reset();
 
     e.preventDefault();
-})
+});
 
-// close modal 
+// Close modal 
 closeModal.addEventListener("click", (e) => {
     modal.close();
     form.reset();
     e.preventDefault();
-})
+});
 
-// Manuaalisesti lisätyt kirjat
+// Manually added books
 addBookToLibrary("The Hobbit", "J.R.R Tolkien", 1937, "Not read", "Fantasy");
 addBookToLibrary("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979, "Read", "Science fiction")
 addBookToLibrary("Harry Potter and the Philosopher's Stone", "J. K. Rownling", 1997, "Not read", "Fantasy");
