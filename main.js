@@ -8,12 +8,18 @@ const form  = document.querySelector("form");
 
 const myLibrary = [];
 
-function Book(title, author, year, status, genre) {
+class Book {
+  constructor(title, author, year, status, genre) {
     this.title = title;
     this.author = author;
     this.year = year;
     this.status = status;
-    this.genre = genre;
+    this.genre = genre
+  }
+
+  toggleStatus() {
+    this.status = this.status === "Not read" ? "Read" : "Not read";
+  }
 }
 
 function addBookToLibrary(title, author, year, status, genre) {
@@ -34,9 +40,7 @@ function addBookToLibrary(title, author, year, status, genre) {
       }
 }
 
-Book.prototype.toggleStatus = function () {
-  this.status = this.status === "Not read" ? "Read" : "Not read";
-}
+
 
 function addNewIndexValue(selector) {
   const allBtns = document.querySelectorAll(selector);
